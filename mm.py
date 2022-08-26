@@ -115,7 +115,6 @@ class Composto:
     # Calcola la massa molare partendo dalla formula splittata
     def __mm(self):
         splitted = self.__semplifica(self.__split())
-        print(splitted)
         if splitted == -1:
             raise Exception()
         else:
@@ -138,9 +137,12 @@ def App():
         if formula in ("0", "exit"):
             os.system("CLS")
             exit()
-        composto = Composto(formula) # Crea istanza da classe Composto
-        print(" \n - Massa molare di "+composto.Formula+": "+ (str)(composto.Mm["Val"]) + " [" + composto.Mm["Unit"]+"]")
-        print("\n  __________________________________________________________________")
+        try:
+            composto = Composto(formula) # Crea istanza da classe Composto
+            print(" \n - Massa molare di "+composto.Formula+": "+ (str)(composto.Mm["Val"]) + " [" + composto.Mm["Unit"]+"]")
+        except:
+            print(" \n - General error")
+        print("\n __________________________________________________________________")
         print("\n\n", end = " - ")
         os.system("PAUSE")
         os.system("CLS")
